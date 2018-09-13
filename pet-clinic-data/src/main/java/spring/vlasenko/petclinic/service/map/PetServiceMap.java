@@ -1,11 +1,11 @@
 package spring.vlasenko.petclinic.service.map;
 
 import spring.vlasenko.petclinic.model.Pet;
-import spring.vlasenko.petclinic.service.CrudService;
+import spring.vlasenko.petclinic.service.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Pet findById(Long id) {
         return super.findById(id);

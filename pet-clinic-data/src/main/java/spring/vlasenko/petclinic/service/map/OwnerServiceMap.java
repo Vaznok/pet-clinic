@@ -1,11 +1,11 @@
 package spring.vlasenko.petclinic.service.map;
 
 import spring.vlasenko.petclinic.model.Owner;
-import spring.vlasenko.petclinic.service.CrudService;
+import spring.vlasenko.petclinic.service.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Owner findById(Long id) {
         return super.findById(id);
@@ -34,5 +34,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     @Override
     void delete(Owner obj) {
         super.delete(obj);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return map.values().stream().filter(owner -> owner.getLastName().equals(lastName)).findFirst().get();
     }
 }

@@ -1,10 +1,12 @@
 package spring.vlasenko.petclinic.service.map;
 
+import org.springframework.stereotype.Service;
 import spring.vlasenko.petclinic.model.Vet;
 import spring.vlasenko.petclinic.service.VetService;
 
 import java.util.Set;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Vet findById(Long id) {
@@ -12,13 +14,8 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
     }
 
     @Override
-    Vet save(Long id, Vet obj) {
-        return super.save(id, obj);
-    }
-
-    @Override
     public Vet save(Vet obj) {
-        return super.save(obj.getId(), obj);
+        return super.save(obj);
     }
 
     @Override

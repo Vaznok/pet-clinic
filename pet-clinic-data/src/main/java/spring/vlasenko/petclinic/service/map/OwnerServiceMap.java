@@ -1,10 +1,12 @@
 package spring.vlasenko.petclinic.service.map;
 
+import org.springframework.stereotype.Service;
 import spring.vlasenko.petclinic.model.Owner;
 import spring.vlasenko.petclinic.service.OwnerService;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Owner findById(Long id) {
@@ -12,13 +14,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     }
 
     @Override
-    Owner save(Long id, Owner obj) {
-        return super.save(id, obj);
-    }
-
-    @Override
     public Owner save(Owner obj) {
-        return super.save(obj.getId(), obj);
+        return super.save(obj);
     }
 
     @Override

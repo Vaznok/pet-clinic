@@ -1,18 +1,13 @@
 package spring.vlasenko.petclinic.bootstrap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import spring.vlasenko.petclinic.model.Owner;
-import spring.vlasenko.petclinic.model.Pet;
 import spring.vlasenko.petclinic.model.Vet;
 import spring.vlasenko.petclinic.service.OwnerService;
 import spring.vlasenko.petclinic.service.PetService;
 import spring.vlasenko.petclinic.service.VetService;
-import spring.vlasenko.petclinic.service.map.OwnerServiceMap;
-import spring.vlasenko.petclinic.service.map.PetServiceMap;
-import spring.vlasenko.petclinic.service.map.VetServiceMap;
-
-import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -21,10 +16,11 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetService petService;
 
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
-        petService = new PetServiceMap();
+    @Autowired
+    public DataLoader(OwnerService ownerService, VetService vetService, PetService petService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
+        this.petService = petService;
     }
 
     @Override

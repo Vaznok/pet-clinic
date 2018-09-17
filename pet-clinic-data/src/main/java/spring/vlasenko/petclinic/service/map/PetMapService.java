@@ -24,12 +24,12 @@ public class PetMapService extends AbstractMapService<Pet, Long> implements PetS
     }
 
     @Override
-    void deleteById(Long id) {
+    public void deleteById(Long id) {
         super.deleteById(id);
     }
 
     @Override
-    void delete(Pet obj) {
+    public void delete(Pet obj) {
         super.delete(obj);
     }
 }

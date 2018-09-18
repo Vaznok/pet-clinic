@@ -1,22 +1,22 @@
 package spring.vlasenko.petclinic.model;
 
-public class Person extends BaseEntity {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.MappedSuperclass;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@MappedSuperclass
+class Person extends BaseEntity {
     private String firstName;
     private String lastName;
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
+    Person(Long id, String firstName, String lastName) {
+        super(id);
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 }

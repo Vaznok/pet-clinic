@@ -1,11 +1,15 @@
 package spring.vlasenko.petclinic.service.map;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 import spring.vlasenko.petclinic.model.Specialty;
-import spring.vlasenko.petclinic.service.SpecialitesService;
+import spring.vlasenko.petclinic.service.SpecialityService;
 
 import java.util.Set;
 
-public class SpecialitesMapService extends AbstractMapService<Specialty, Long> implements SpecialitesService {
+@Service
+@Profile({"default", "map"})
+public class SpecialityMapService extends AbstractMapService<Specialty, Long> implements SpecialityService {
     @Override
     public Specialty findById(Long id) {
         return super.findById(id);

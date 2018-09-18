@@ -1,42 +1,34 @@
 package spring.vlasenko.petclinic.model;
 
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity {
     private String name;
-    private PetType petType;
-    private Owner owner;
     private LocalDate birthDay;
 
-    public String getName() {
-        return name;
-    }
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private PetType petType;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
 
-    public PetType getPetType() {
-        return petType;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private Set<Visit> visits = new HashSet<>();
 
-    public void setPetType(PetType petType) {
-        this.petType = petType;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public LocalDate getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(LocalDate birthDay) {
-        this.birthDay = birthDay;
-    }
 }
